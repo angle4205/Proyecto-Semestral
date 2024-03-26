@@ -17,6 +17,12 @@ header {
   align-items: center;
 }
 
+#anuel {
+  font-size: larger;
+  margin: 8px;
+}
+
+
 img {
   width: 320px;
   height: 340px;
@@ -96,7 +102,7 @@ h1:hover {
 }
 
 .contenedor > div:hover {
-  background-color: lightslategray;
+  background-color: lightgrey;
 }
 
 .informacion {
@@ -109,26 +115,28 @@ h1:hover {
 }
 
 .informacion > p:first-child {
-  font-family: sans-serif;
   font-size: 25px;
   font-weight: 300;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .informacion .precio {
-  font-family: sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 300px;
 }
 
 .informacion button {
+  
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   background-color: lightgreen;
   width: 100px;
-  height: 50;
-  border-radius: 8px;
+  height: 60;
+  border-radius: 10px;
   border: none;
 
   font-size: 16px;
-  font-weight: bolder;
+  font-weight: bold;
   cursor: pointer;
 }
 

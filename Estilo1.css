@@ -22,13 +22,12 @@ header {
   margin: 8px;
 }
 
-
-img {
+/* img {
   width: 320px;
   height: 340px;
   object-fit: cover;
   border-radius: 20px 20px 0px 0px;
-}
+} */
 
 a {
   text-decoration: none;
@@ -43,7 +42,6 @@ nav {
 
 nav a:hover {
   color: green;
-  text-decoration-line: underline;
 }
 
 body {
@@ -51,16 +49,6 @@ body {
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
   margin: 0;
-}
-
-h1 {
-  margin: 10px;
-  font-weight: lighter;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-}
-
-h1:hover {
-  color: green;
 }
 
 .logo {
@@ -117,18 +105,17 @@ h1:hover {
 .informacion > p:first-child {
   font-size: 25px;
   font-weight: 300;
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
 .informacion .precio {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 20px;
   font-weight: 300px;
 }
 
 .informacion button {
-  
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   background-color: lightgreen;
   width: 100px;
   height: 60;
@@ -142,4 +129,61 @@ h1:hover {
 
 .informacion button:hover {
   background-color: lightseagreen;
+}
+
+.img-logo {
+  width: 50px;
+  display: flex;
+}
+
+.navbar-expand-lg {
+  height: auto;
+  display: flex;
+  margin: 0%;
+  justify-content: center;
+}
+
+.navbar-momo {
+  display: flex;
+  margin-top: -40%;
+  margin-left: -20%;
+}
+
+.navbar-login {
+  color: rgb(77, 151, 255);
+  text-decoration: none;
+  margin-right: 20px;
+  background-color: rgb(62, 72, 85);
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  justify-content: right;
+  font-size: 13px;
+}
+
+.Carrusel-Tamano {
+  display: flex;
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+}
+
+.productos1 {
+  justify-content: center;
+  font-size: 40px;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+  margin-bottom: 20px;
+  padding: 5px;
+  background-color: rgb(49, 202, 49);
+  border-radius: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  display: flex;
 }

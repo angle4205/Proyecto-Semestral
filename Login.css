@@ -1,205 +1,257 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-h1{
-    margin-bottom: 15px;
-    font-size: 28px;
+
+
+p {
+  font-weight: 600;
+  border: 4px solid transparent;
+  border-radius: 30px;
+  padding: 4px;
+  background-color: transparent;
+  backdrop-filter: blur(4px);
 }
 
-body{
-    background: linear-gradient(45deg, rgba(255, 153, 45, 0.5), rgba(250, 37, 143, 0.5)), url('Images/ARTURO\ VIDAL.jpg');
-    background-size: 52%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
+nav {
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
-.container{
-    border: 4px solid transparent;
-    background-color: #fff;
-    border-radius: 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    position: relative;
-    overflow: hidden;
-    width: 768px;
-    max-width: 92%;
-    min-height: 390px;
+.navbar-expand-lg {
+  min-height: 60px;
+  height: auto;
+  display: flex;
+  margin: 0%;
 }
 
-.container p{
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.3px;
-    margin: 20px 0;
+.nav-item {
+  margin-left: 2px;
+  margin-right: 2px;
 }
 
-.container span{
-    font-size: 12px;
+.navbar-toggler {
+  width: 50px;
 }
 
-.container a{
-    color: #333;
-    font-size: 13px;
-    text-decoration: none;
-    margin: 15px 0 10px;
+.img-logo {
+  height: 40px;
 }
 
-.container button{
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 15px;
-    border: 4px solid transparent;
-    border-radius: 20px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-    background-image: linear-gradient(20deg, #ff992dcd, #fa258fba);
+.navbar-login {
+  color: rgb(77, 151, 255);
+  text-decoration: none;
+  margin-right: 20px;
+  background-color: rgb(62, 72, 85);
+  border-radius: 30px;
+  padding: 5px;
+  display: flex;
+  justify-content: right;
+  font-size: 13px;
 }
 
-.container button.hidden{
-    background-color: transparent;
-    border-color: #fff;
+body {
+  padding-top: 60px ;
+  backdrop-filter: blur(3px);
+  background:
+    url("Images/fondolol.jpg");
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
 }
 
-.container form{
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 40px;
-    height: 100%;
+.container {
+  border: 4px solid transparent;
+  background-color: #fff;
+  border-radius: 40px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 92%;
+  min-height: 390px;
 }
 
-.container input{
-    background-color: #e2e2e2;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    font-size: 12px;
-    border-radius: 30px;
-    width: 100%;
-    outline: none;
+.container p {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.3px;
+  margin: 20px 0;
 }
 
-.form-container{
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
+.container span {
+  font-size: 12px;
 }
 
-.sign-in{
-    left: 0;
-    width: 50%;
-    z-index: 2;
+.container a {
+  color: #333;
+  font-size: 13px;
+  text-decoration: none;
+  margin: 15px 0 10px;
 }
 
-.container.active .sign-in{
-    transform: translateX(100%);
+.container button {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 15px;
+  border: 3px solid white;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  background-image: linear-gradient(20deg, #30bf54, #ebe848);
 }
 
-.sign-up{
-    left: 0;
-    width: 50%;
+.container button.hidden {
+  background-color: transparent;
+  border-color: #fff;
+}
+
+.container form {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 40px;
+  height: 100%;
+}
+
+.container input {
+  background-color: #e2e2e2;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  font-size: 12px;
+  border-radius: 30px;
+  width: 100%;
+  outline: none;
+}
+
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: all 0.6s ease-in-out;
+}
+
+.sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.container.active .sign-in {
+  transform: translateX(100%);
+}
+
+.sign-up {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%,
+  49.99% {
     opacity: 0;
     z-index: 1;
-}
-
-.container.active .sign-up{
-    transform: translateX(100%);
+  }
+  50%,
+  100% {
     opacity: 1;
     z-index: 5;
-    animation: move 0.6s;
+  }
 }
 
-@keyframes move{
-    0%, 49.99%{
-        opacity: 0;
-        z-index: 1;
-    }
-    50%, 100%{
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.toggle-container{
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    border-radius: 40px 0 0 40px;
-    z-index: 1000;
+.toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 0.6s ease-in-out;
+  border-radius: 40px 0 0 40px;
+  z-index: 1000;
 }
 
 .brand-logo {
-    width: auto;
+  width: auto;
 }
 
-.container.active .toggle-container{
-    transform: translateX(-100%);
-    border-radius: 0 40px 40px 0;
+.container.active .toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 40px 40px 0;
 }
 
-.toggle{
-    background-image: linear-gradient(20deg, #ff992d, #fa258fe2);
-    height: 100%;
-    color: #fff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+.toggle {
+  background-size: cover;
+  background-image: linear-gradient(20deg, #fffc3ed4, #25fa25c8),
+    url("Images/pele.jpg");
+  height: 100%;
+  color: #fff;
+  position: relative;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
 }
 
-.container.active .toggle{
-    transform: translateX(50%);
+.container.active .toggle {
+  transform: translateX(50%);
 }
 
-.toggle-panel{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 30px;
-    text-align: center;
-    top: 0;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 30px;
+  text-align: center;
+  top: 0;
+  transform: translateX(0);
+  transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
-    transform: translateX(-200%);
+.toggle-left {
+  transform: translateX(-200%);
 }
 
-.container.active .toggle-left{
-    transform: translateX(0);
+.container.active .toggle-left {
+  transform: translateX(0);
 }
 
-.toggle-right{
-    right: 0;
-    transform: translateX(0);
+.toggle-right {
+  right: 0;
+  transform: translateX(0);
 }
 
-.container.active .toggle-right{
-    transform: translateX(200%);
+.container.active .toggle-right {
+  transform: translateX(200%);
 }

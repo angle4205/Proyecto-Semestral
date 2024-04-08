@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 
 * {
+  margin-top: 70px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -34,19 +35,90 @@
   margin-right: 2px;
 }
 
-.navbar-login {
-  color: rgb(77, 151, 255);
-  text-decoration: none;
-  margin-right: 20px;
-  background-color: rgb(62, 72, 85);
-  border-radius: 30px;
-  padding: 5px;
-  display: flex;
-  justify-content: right;
-  font-size: 13px;
+#productsList {
+  margin: 12px auto;
+  border: 4px solid white;
+  min-width: 280px;
+  width: 92%;
+  table-layout: fixed;
+  overflow-x: auto;
 }
 
-body {
-    background-image: url(mockups/4.png) ;
-    background-size: auto;
+#productsList th,
+#productsList td {
+  border: 1px solid white;
+  color: whitesmoke;
+  text-align: left;
+  padding: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#productsList th:first-child,
+#productsList td:first-child {
+  width: 10%;
+}
+
+#productsList th:nth-child(2),
+#productsList td:nth-child(2) {
+  width: 20%;
+}
+
+#productsList th:nth-child(3),
+#productsList td:nth-child(3) {
+  width: 20%;
+}
+
+#productsList th:nth-child(4),
+#productsList td:nth-child(4) {
+  width: 15%;
+}
+
+#productsList th:nth-child(5),
+#productsList td:nth-child(5) {
+  width: 15%;
+}
+
+#productsList thead th {
+  background-color: #4a4a4a;
+  color: white;
+  font-weight: lighter;
+}
+
+#productsList tbody tr {
+  cursor: pointer;
+}
+
+#productForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#productForm .form-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+#productForm input {
+  flex: 1;
+  margin-right: 5px;
+}
+
+.form-group {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.btn {
+  margin-top: 10px;
+}
+
+span {
+  margin-top: 10px;
 }

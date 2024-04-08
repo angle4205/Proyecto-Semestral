@@ -45,3 +45,8 @@
   justify-content: right;
   font-size: 13px;
 }
+
+body {
+  background-image: url(mockups/6.png);
+  background-size: 100%;
+}

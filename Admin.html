@@ -101,9 +101,9 @@
       style="
         border-top-width: 70px;
         margin-top: 80px;
-        border: 2px solid white;
+        border: 1px solid white;
         padding: 10px;
-        background-color: #292956;
+        background: linear-gradient(to right, rgb(45, 65, 164), rgb(4, 10, 90));
         margin-left: 15px;
         margin-right: 15px;
         border-radius: 80px;
@@ -141,10 +141,9 @@
     <h2
       style="
         border-top-width: 70px;
-        margin-top: 20px;
-        border: 2px solid white;
+        border: 1px solid white;
         padding: 10px;
-        background-color: #54845c;
+        background: linear-gradient(to right, green, rgb(10, 214, 10));
         margin-left: 15px;
         margin-right: 15px;
         border-radius: 80px;
@@ -220,6 +219,7 @@
         <button
           class="btn btn-outline-secondary"
           type="button"
+          style="color: lightgray;"
           onclick="document.getElementById('productImageInput').click()"
         >
           Seleccionar Imagen
@@ -227,22 +227,24 @@
         <button
           class="btn btn-outline-secondary"
           type="button"
-          style="padding: 5px"
+          style="padding: 5px; margin-left: 5px;"
           onclick="editProductImage()"
         >
           ✏️
         </button>
-        <span id="imageURLSpan">URL de la imagen</span>
+        
       </div>
+      <span id="imageURLSpan">URL de la imagen</span>
       <br />
     </div>
 
     <!-- botones -->
-    <button 
-    style="margin"
-    onclick="deleteProduct()">Eliminar -</button>
-    <button 
-    onclick="addProduct()">Añadir +</button>
+    <div class="btnContainer">
+      <button id="btnE"
+      onclick="deleteProduct()">Eliminar -</button>
+      <button id="btnA"
+      onclick="addProduct()">Añadir +</button>
+    </div>
 
     <script src="AdminScript.js"></script>
 

@@ -37,7 +37,7 @@
 
 #productsList {
   margin: 12px auto;
-  border: 4px solid white;
+  border: 2px solid white;
   min-width: 280px;
   width: 92%;
   table-layout: fixed;
@@ -94,6 +94,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 12px;
 }
 
 #productForm .form-group {
@@ -108,17 +109,39 @@
   margin-right: 5px;
 }
 
+#imageURLSpan {
+  color: lightgray;
+}
+
 .form-group {
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
 }
 
-.btn {
-  margin-top: 10px;
+#btnE, #btnA {
+  border-radius: 30px;
+  color: white;
+  padding: 10px 20px;
+  border: solid white 1px;
+  cursor: pointer;
+  margin: 10px;
+  width: 120px;
 }
 
-span {
-  margin-top: 10px;
+#btnE {
+  background: linear-gradient(to right, red, darkred);
+}
+
+#btnA {
+  background: linear-gradient(to right, green, darkgreen);
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 10px;
 }

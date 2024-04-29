@@ -10,6 +10,7 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <title>Camisetas 6.5 | Inicio de sesion</title>
   </head>
 
@@ -32,9 +33,9 @@
             href="#"
             style="margin-right: 8px; margin-left: 6px"
           >
-            <img src="css/Images/logo2.gif" alt="Logo" class="img-logo" /> CAMISETAS
-            6.5</a
-          >
+            <img src="css/Images/logo2.gif" alt="Logo" class="img-logo" />
+            CAMISETAS 6.5
+          </a>
 
           <button
             class="navbar-toggler collapsed"
@@ -44,6 +45,7 @@
             aria-controls="navbarNav"
             aria-expanded="false"
             aria-label="Toggle navigation"
+            style="border-radius: 30px"
           >
             <span class="navbar-toggler-icon" style="width: 1.1em"></span>
           </button>
@@ -58,7 +60,6 @@
                   href="Admin.html"
                   >ADMIN*</a
                 >
-
               </li>
               <li class="nav-item">
                 <a
@@ -106,13 +107,13 @@
       <div class="form-container sign-up">
         <form>
           <h1 style="color: white">Crear cuenta</h1>
-          <input type="text" id="regName" placeholder="Usuario" />
+          <input type="text" id="registerUsername" placeholder="Usuario" />
           <input
             type="email"
-            id="regMail"
+            id="registerEmail"  
             placeholder="Correo Electronico"
           />
-          <input type="password" id="regPassword" placeholder="Contraseña" />
+          <input type="password" id="registerPassword" placeholder="Contraseña" />
           <button>Registrarse</button>
         </form>
       </div>
@@ -122,16 +123,14 @@
           <h1 style="color: white">Iniciar Sesion</h1>
           <input
             type="email"
-            id="iniCorreo"
+            id="loginEmail"
             placeholder="Correo Electronico"
           />
-          
-          <input type="password" id="iniPassword" placeholder="Contraseña" />
-          
+          <input type="password" id="loginPassword" placeholder="Contraseña" />
           <a href="#" style="color: rgba(255, 255, 255, 0.616)"
             >Olvidaste tu contraseña?</a
           >
-          <button>Iniciar Sesion</button>
+          <button onclick="iniciarSesion(event)">Iniciar Sesion</button>
         </form>
       </div>
       <!-- Container animado para togglear inicio / registro -->
@@ -142,7 +141,7 @@
               Camisetas 6.5 <img src="css/Images/logo2.gif" class="brand-logo" />
             </h1>
             <p>Inicia sesion con tu cuenta</p>
-            <button class="hidden" id="login" onclick="inciarSesion()">Iniciar sesion</button>
+            <button class="hidden" id="login">Iniciar sesion</button>
           </div>
           <div class="toggle-panel toggle-right">
             <h1>
@@ -154,7 +153,8 @@
         </div>
       </div>
     </div>
-    <div id="errorMessageCorreo" class="errores">El correo debe contener un @</div>
+    <br />
+    <div id="messageError" class="errores" style="display: none;">AYUDA</div>
 
     <script src="js/LoginScript.js"></script>
     <script

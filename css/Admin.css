@@ -22,8 +22,19 @@
   margin: 0%;
 }
 
+.navbar-brand {
+  margin-bottom: 0px;
+}
+
 .navbar-toggler {
   width: 50px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.nav-link {
+  border-radius: 25px;
 }
 
 .img-logo {
@@ -42,6 +53,7 @@
   width: 92%;
   table-layout: fixed;
   overflow-x: auto;
+  font-size: 13px;
 }
 
 #productsList th,
@@ -153,6 +165,7 @@
   position: absolute;
   margin-bottom: -40px ;
   font-size: 14px;
+  margin-bottom: 1px;
   padding: 5px;
   position: relative;
   border-radius: 20px;

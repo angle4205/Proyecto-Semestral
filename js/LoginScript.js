@@ -19,36 +19,52 @@ loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
 
-function validateCorreo() {
-    var correo = getElementById('iniCorreo');
-
-    if (correo.includes('@')) {
-        console.log("sip")
-        return true
-    } else {
-        console.log("nop")
-        return false
+function validateCorreo(){
+    var email = $('#loginEmail').val();
+    if (email.length == 0) {  
+        return false;
     }
-
-
-
-
+    if (email.length > 25) {
+        return false;
+    }
+    return true;
 }
 
 function validatePassword() {
-    var pass = getElementById('iniPassword');
-    //WIP
-    return true
+    var password = $('#loginPassword').val();
+    
+    if (password.length == 0) {
+        return false;
+    } else if (password.length > 25) {
+        return false;
+    } else {
+        return true;
+    }
+
 }
 
-function iniciarSesion() {
+
+function iniciarSesion(event) {
+    event.preventDefault();
+    var messageError = document.getElementById('messageError');
+    var validado = true;
+    var errores = '';
 
     if (!validateCorreo()) {
+        errores = errores + '• Correo invalido \n ';
+
         validado = false;
     }
 
     if (!validatePassword()) {
+        errores = errores + '• Contraseña invalida \n';
+
         validado = false;
+    }
+
+    if (!validado) {
+        messageError.style.display = 'block';
+        messageError.innerHTML = errores;
     }
 
 }

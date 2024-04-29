@@ -6,16 +6,6 @@ function copyRowToInputs(row) {
   document.getElementById("imageURLSpan").textContent = cells[1].textContent;
 }
 
-//Inicializa los tooltip
-document.addEventListener("DOMContentLoaded", function () {
-  var tooltipTriggerList = [].slice.call(
-    document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  );
-  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-    return new bootstrap.Tooltip(tooltipTriggerEl);
-  });
-});
-
 function validateProductName() {
   var input = document.getElementById("productNameInput");
   var name = input.value.trim();
@@ -61,6 +51,7 @@ function validateProductPrice() {
     return true;
   }
 }
+
 
 function validateProductColor() {
   var input = document.getElementById('productColorInput');

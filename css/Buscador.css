@@ -21,10 +21,20 @@
   margin: 0%;
 }
 
-.navbar-toggler {
-  width: 50px;
+.navbar-brand {
+  margin-bottom: 0px;
 }
 
+.navbar-toggler {
+  width: 50px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.nav-link {
+  border-radius: 25px;
+}
 .img-logo {
   height: 40px;
 }

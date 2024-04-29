@@ -145,3 +145,13 @@
   flex-direction: row;
   margin-bottom: 10px;
 }
+
+.errores{
+  box-shadow: 10px;
+  color: palevioletred;
+  display: none;
+  font-size: 14px;
+  padding: 5px;
+  position: relative;
+  border-radius: 20px;
+}

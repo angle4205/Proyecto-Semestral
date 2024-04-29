@@ -31,8 +31,8 @@
             href="#"
             style="margin-right: 8px; margin-left: 6px"
           >
-            <img src="Images/logo2.gif" alt="Logo" class="img-logo" /> CAMISETAS
-            6.5
+            <img src="css/Images/logo2.gif" alt="Logo" class="img-logo" />
+            CAMISETAS 6.5
           </a>
 
           <button
@@ -129,7 +129,7 @@
       <tbody>
         <tr onclick="copyRowToInputs(this)">
           <td>1</td>
-          <td>Images/Sanluis24.png</td>
+          <td>css/Images/Sanluis24.png</td>
           <td>San luis 2024</td>
           <td>24000</td>
           <td>Amarillo</td>
@@ -158,11 +158,15 @@
     <!-- inputs + boton editar -->
     <div id="productForm">
       <div class="form-group">
+        <!-- Nombre -->
         <input
           type="text"
           id="productNameInput"
           class="form-control"
           placeholder="Nombre"
+          data-bs-toggle="tooltip"
+          data-bs-placement="right"
+          title=""
         />
         <button
           class="btn btn-outline-secondary"
@@ -172,8 +176,10 @@
           ✏️
         </button>
       </div>
+      <div id="errorMessageName" class="errores" style="display: none"></div>
       <br />
 
+      <!-- Precio -->
       <div class="form-group">
         <input
           type="text"
@@ -189,8 +195,9 @@
           ✏️
         </button>
       </div>
+      <div id="errorMessagePrice" class="errores" style="display: none"></div>
       <br />
-
+      <!-- Color -->
       <div class="form-group">
         <input
           type="text"
@@ -206,20 +213,23 @@
           ✏️
         </button>
       </div>
+      <div id="errorMessageColor" class="errores" style="display: none"></div>
       <br />
+
+      <!-- Imagen -->
 
       <div class="form-group">
         <input
           type="file"
           id="productImageInput"
           class="form-control-file"
-          accept="Images/*"
+          accept="css/Images/*"
           style="display: none"
         />
         <button
           class="btn btn-outline-secondary"
           type="button"
-          style="color: lightgray;"
+          style="color: lightgray"
           onclick="document.getElementById('productImageInput').click()"
         >
           Seleccionar Imagen
@@ -227,23 +237,21 @@
         <button
           class="btn btn-outline-secondary"
           type="button"
-          style="padding: 5px; margin-left: 5px;"
+          style="padding: 5px; margin-left: 5px"
           onclick="editProductImage()"
         >
           ✏️
         </button>
-        
       </div>
       <span id="imageURLSpan">URL de la imagen</span>
+      <div id="errorMessageImg" class="errores" style="display: none"></div>
       <br />
     </div>
 
     <!-- botones -->
     <div class="btnContainer">
-      <button id="btnE"
-      onclick="deleteProduct()">Eliminar -</button>
-      <button id="btnA"
-      onclick="addProduct()">Añadir +</button>
+      <button id="btnE" onclick="deleteProduct()">Eliminar -</button>
+      <button id="btnA" onclick="addProduct()">Añadir +</button>
     </div>
 
     <script src="js/AdminScript.js"></script>

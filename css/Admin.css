@@ -149,7 +149,9 @@
 .errores{
   box-shadow: 10px;
   color: palevioletred;
-  display: none;
+  display: block;
+  position: absolute;
+  margin-bottom: -40px ;
   font-size: 14px;
   padding: 5px;
   position: relative;

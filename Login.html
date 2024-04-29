@@ -106,13 +106,13 @@
       <div class="form-container sign-up">
         <form>
           <h1 style="color: white">Crear cuenta</h1>
-          <input type="text" id="placeholder" placeholder="Usuario" />
+          <input type="text" id="regName" placeholder="Usuario" />
           <input
             type="email"
-            id="placeholder"
+            id="regMail"
             placeholder="Correo Electronico"
           />
-          <input type="password" id="placeholder" placeholder="Contraseña" />
+          <input type="password" id="regPassword" placeholder="Contraseña" />
           <button>Registrarse</button>
         </form>
       </div>
@@ -122,10 +122,12 @@
           <h1 style="color: white">Iniciar Sesion</h1>
           <input
             type="email"
-            id="placeholder"
+            id="iniCorreo"
             placeholder="Correo Electronico"
           />
-          <input type="password" id="placeholder" placeholder="Contraseña" />
+          
+          <input type="password" id="iniPassword" placeholder="Contraseña" />
+          
           <a href="#" style="color: rgba(255, 255, 255, 0.616)"
             >Olvidaste tu contraseña?</a
           >
@@ -140,7 +142,7 @@
               Camisetas 6.5 <img src="css/Images/logo2.gif" class="brand-logo" />
             </h1>
             <p>Inicia sesion con tu cuenta</p>
-            <button class="hidden" id="login">Iniciar sesion</button>
+            <button class="hidden" id="login" onclick="inciarSesion()">Iniciar sesion</button>
           </div>
           <div class="toggle-panel toggle-right">
             <h1>
@@ -152,6 +154,7 @@
         </div>
       </div>
     </div>
+    <div id="errorMessageCorreo" class="errores">El correo debe contener un @</div>
 
     <script src="js/LoginScript.js"></script>
     <script

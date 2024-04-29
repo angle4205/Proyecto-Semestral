@@ -18,3 +18,37 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
     container.classList.remove("active");
 });
+
+function validateCorreo() {
+    var correo = getElementById('iniCorreo');
+
+    if (correo.includes('@')) {
+        console.log("sip")
+        return true
+    } else {
+        console.log("nop")
+        return false
+    }
+
+
+
+
+}
+
+function validatePassword() {
+    var pass = getElementById('iniPassword');
+    //WIP
+    return true
+}
+
+function iniciarSesion() {
+
+    if (!validateCorreo()) {
+        validado = false;
+    }
+
+    if (!validatePassword()) {
+        validado = false;
+    }
+
+}

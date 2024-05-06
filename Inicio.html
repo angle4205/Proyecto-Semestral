@@ -20,6 +20,54 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $.ajax({
+          url: "https://v3.football.api-sports.io/standings?league=39&season=2020",
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "9299052402mshfb49d105f14df47p1e56fdjsnca95cebafabe",
+            "x-rapidapi-host": "v3.football.api-sports.io",
+          },
+          success: function (response) {
+            if (response.response && response.response.length > 0) {
+              var equipos = response.response[0].league.standings[0];
+              equipos.sort(function (a, b) {
+                return b.points - a.points;
+              });
+              for (var i = 0; i < 3; i++) {
+
+                
+                console.log(equipos[i].team.name);
+                
+                $("#equiposPunteros").append(
+                  '<div class="card" style="width: 18rem; margin: 10px;">' +
+                    '<img src="' +
+                    equipos[i].team.logo +
+                    '" class="card-img-top" alt="' +
+                    equipos[i].team.name +
+                    '">' +
+                    '<div class="card-body">' +
+                    '<h5 class="card-title">' +
+                    equipos[i].team.name +
+                    "</h5>" +
+                    '<p class="card-text">Puntos: ' +
+                    equipos[i].points +
+                    "</p>" +
+                    "</div>" +
+                    "</div>"
+                );
+              }
+            }
+          },
+          error: function (error) {
+            console.error("Error al cargar datos:", error);
+          },
+        });
+      });
+    </script>
   </head>
 
   <body>
@@ -165,6 +213,11 @@
       </button>
     </div>
 
+    <div class="container">
+      <h1 style="">Equipos lider Premier League</h1>
+      <div class="row" id="equiposPunteros"></div>
+    </div>
+
     <h2 class="productos1">PRODUCTOS</h2>
 
     <div class="contenedor" id="contenedor">
@@ -177,7 +230,11 @@
         </div>
       </div>
       <div>
-        <img id="imgcontenedor" src="css/Images/Iverson.webp" alt="producto 2" />
+        <img
+          id="imgcontenedor"
+          src="css/Images/Iverson.webp"
+          alt="producto 2"
+        />
         <div class="informacion">
           <p>Sixers Iverson</p>
           <p class="precio">$35.000</p>
@@ -185,7 +242,11 @@
         </div>
       </div>
       <div>
-        <img id="imgcontenedor" src="css/Images/Colocolo.webp" alt="producto 3" />
+        <img
+          id="imgcontenedor"
+          src="css/Images/Colocolo.webp"
+          alt="producto 3"
+        />
         <div class="informacion">
           <p>Colo-Colo Local 2024</p>
           <p class="precio">$50.000</p>
@@ -193,7 +254,11 @@
         </div>
       </div>
       <div>
-        <img id="imgcontenedor" src="css/Images/Maradona.webp" alt="producto 4" />
+        <img
+          id="imgcontenedor"
+          src="css/Images/Maradona.webp"
+          alt="producto 4"
+        />
         <div class="informacion">
           <p>Argentina 94' Maradona</p>
           <p class="precio">$24.000</p>
@@ -276,6 +341,12 @@
           <button>Comprar</button>
         </div>
       </div>
+    </div>
+
+    <div class="botonapi">
+      <button type="button" class="btn btn-primary" id="enviar">
+        Las ligas
+      </button>
     </div>
 
     <script src="js/InicioScript.js"></script>

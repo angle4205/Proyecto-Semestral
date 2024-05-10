@@ -51,13 +51,13 @@ function iniciarSesion(event) {
     var errores = '';
 
     if (!validateCorreo()) {
-        errores = errores + '• Correo invalido \n ';
+        errores = errores + '• Correo invalido ' + "<br>";
 
         validado = false;
     }
 
     if (!validatePassword()) {
-        errores = errores + '• Contraseña invalida \n';
+        errores = errores + '• Contraseña invalida' + "<br>";
 
         validado = false;
     }
@@ -66,5 +66,11 @@ function iniciarSesion(event) {
         messageError.style.display = 'block';
         messageError.innerHTML = errores;
     }
+
+}
+
+function registrarse(event) {
+    event.preventDefault();
+    var messageError = $('messageError').val;
 
 }

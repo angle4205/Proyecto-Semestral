@@ -16,20 +16,19 @@ $(document).ready(function () {
           console.log(equipos[i].team.name);
 
           $("#equiposPunteros").append(
-            $(
-              '<div class="container" style="width: 100px; margin: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center;">'
-            )
+            $('<div class="card-fixed-size" style="width: 11rem; margin: 10px; box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);">')
               .append(
-                '<img src="' +
-                  equipos[i].team.logo +
-                  '" class="card-img-top" alt="' +
-                  equipos[i].team.name +
-                  '">'
+                $('<img class="card-img-top" alt="' + equipos[i].team.name + '">')
+                  .attr('src', equipos[i].team.logo)
               )
               .append(
-                '<p class="card-text" style="margin-top: 10px;">' +
-                  equipos[i].points +
-                  " pts</p>"
+                $('<div class="card-body">')
+                  .append(
+                    $('<h5 class="card-title team-name">' + equipos[i].team.name + '</h5>')
+                  )
+                  .append(
+                    $('<p class="card-text">' + equipos[i].points + ' pts</p>')
+                  )
               )
           );
         }

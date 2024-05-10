@@ -107,29 +107,42 @@
   flex-direction: column;
   align-items: center;
   margin-top: 12px;
-}
-
-#productForm .form-group {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
-}
-
-#productForm input {
-  flex: 1;
-  margin-right: 5px;
-}
-
-#imageURLSpan {
-  color: lightgray;
 }
 
 .form-group {
-
   display: flex;
-  flex-direction: row;
+  width: 90%;
+}
 
+.form-group button {
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 36.28px;
+  padding: 5px;
+  margin-left: 5px;
+}
+
+
+.form-group #imgBtn {
+  min-width: 280px;
+  width: 100%;
+}
+
+
+#productForm input {
+  min-width: 280px;
+}
+
+#productForm textarea {
+  min-width: 280px;
+}
+
+
+#imageURLSpan {
+  margin-top: 10px;
+  color: lightgray;
 }
 
 #btnE, #btnA {

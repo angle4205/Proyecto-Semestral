@@ -2,7 +2,7 @@ function copyRowToInputs(row) {
   var cells = row.getElementsByTagName("td");
   document.getElementById("productNameInput").value = cells[2].textContent;
   document.getElementById("productPriceInput").value = cells[3].textContent;
-  document.getElementById("productColorInput").value = cells[4].textContent;
+  document.getElementById("productDescripcionInput").value = cells[4].textContent;
   document.getElementById("imageURLSpan").textContent = cells[1].textContent;
 }
 
@@ -53,18 +53,18 @@ function validateProductPrice() {
 }
 
 
-function validateProductColor() {
-  var input = document.getElementById('productColorInput');
-  var color = input.value.trim();
-  var errorMessage = document.getElementById('errorMessageColor');
+function validateProductDescription() {
+  var input = document.getElementById('productDescripcionInput');
+  var descripcion = input.value.trim();
+  var errorMessage = document.getElementById('errorMessageDescripcion');
 
-  if (color === "") {
+  if (descripcion === "") {
     errorMessage.innerText = "El campo no puede estar vacío";
     errorMessage.classList.add('errores');
     errorMessage.style.display = 'block';
     return false;
-  } else if (color.length > 25) {
-    errorMessage.innerText = "El color no puede tener más de 25 caracteres";
+  } else if (descripcion.length > 100) {
+    errorMessage.innerText = "La descripcion no puede tener más de 100 caracteres";
     errorMessage.classList.add('errores');
     errorMessage.style.display = 'block';
     return false;
@@ -80,7 +80,7 @@ function validateProductColor() {
 function addProduct() {
   var name = document.getElementById('productNameInput').value;
   var price = document.getElementById('productPriceInput').value;
-  var color = document.getElementById('productColorInput').value;
+  var descripcion = document.getElementById('productDescripcionInput').value;
   var validado = true;
 
   if (!validateProductName()) {
@@ -91,7 +91,7 @@ function addProduct() {
     validado = false;
   }
 
-  if (!validateProductColor()) {
+  if (!validateProductDescription()) {
     validado = false;
   }
 
@@ -118,9 +118,9 @@ function editProductPrice() {
   }
 }
 
-function editProductColor() {
-  var color = document.getElementById("productColorInput").value;
-  if (validateProductColor()) {
+function editProductDescription() {
+  var descripcion = document.getElementById("productDescripcionInput").value;
+  if (validateProductDescription()) {
     // WIP
   }
 }

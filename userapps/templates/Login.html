@@ -1,9 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/Login.css" />
+    <title>Camisetas 6.5 | Inicio de sesión</title>
+    <link rel="stylesheet" href="{% static 'userapps/css/Login.css' %}" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,9 +13,7 @@
       crossorigin="anonymous"
     />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <title>Camisetas 6.5 | Inicio de sesion</title>
   </head>
-
   <body>
     <nav
       class="navbar bg-dark border-bottom border-body navbar-expand-lg position-fixed"
@@ -28,12 +28,16 @@
           class="container-fluid bg-dark justify-content-start"
           style="padding-right: 5px; padding-left: 5px"
         >
-          <a 
+          <a
             class="navbar-brand p-1"
-            href="Inicio.html"
+            href="{% url 'inicio' %}"
             style="margin-right: 8px; margin-left: 6px"
           >
-            <img src="css/Images/logo2.gif" alt="Logo" class="img-logo"/>
+            <img
+              src="{% static 'userapps/css/Images/logo2.gif' %}"
+              alt="Logo"
+              class="img-logo"
+            />
             CAMISETAS 6.5
           </a>
 
@@ -52,12 +56,13 @@
 
           <div class="navbar-collapse collapse" id="navbarNav">
             <ul class="navbar-nav">
+              {% if user.is_staff %}
               <li class="nav-item">
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
                   aria-current="page"
-                  href="Admin.html"
+                  href="{% url 'admin' %}"
                   >ADMIN*</a
                 >
               </li>
@@ -65,8 +70,18 @@
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
+                  href="{% url 'admin_crud' %}"
+                  >CRUD*</a
+                >
+              </li>
+              {% endif %}
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link p-1 border"
+                  style="margin-bottom: 2px"
                   aria-current="page"
-                  href="Inicio.html"
+                  href="{% url 'inicio' %}"
                   >Pagina principal</a
                 >
               </li>
@@ -74,7 +89,7 @@
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
-                  href="Carrito.html"
+                  href="{% url 'carrito' %}"
                   >Carrito</a
                 >
               </li>
@@ -82,18 +97,32 @@
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
-                  href="Buscador.html"
+                  href="{% url 'buscador' %}"
                   >Buscador</a
                 >
               </li>
+              {% if user.is_authenticated %}
               <li class="nav-item">
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
-                  href="Login.html"
-                  >Inicio de sesion</a
+                  href="{% url 'logout' %}"
+                  >Cerrar sesión</a
                 >
               </li>
+              <li class="nav-item">
+                <span class="nav-link"> Bienvenido, {{ user.username }}</span>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="nav-link p-1 border"
+                  style="margin-bottom: 2px"
+                  href="{% url 'login' %}"
+                  >Inicio de sesión</a
+                >
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -105,47 +134,78 @@
     <div class="container" id="container">
       <!-- Container de Registro -->
       <div class="form-container sign-up">
-        <form>
+        <form id="registerForm" method="post">
+          {% csrf_token %}
           <h1 style="color: white">Crear cuenta</h1>
-          <input type="text" id="registerUsername" placeholder="Usuario" />
+          <input
+            type="text"
+            id="registerUsername"
+            name="registerUsername"
+            placeholder="Usuario"
+          />
           <input
             type="email"
-            id="registerEmail"  
+            id="registerEmail"
+            name="registerEmail"
             placeholder="Correo Electronico"
           />
-          <input type="password" id="registerPassword" placeholder="Contraseña" />
+          <input
+            type="password"
+            id="registerPassword"
+            name="registerPassword"
+            placeholder="Contraseña"
+          />
           <button id="registrar">Registrar</button>
         </form>
       </div>
+
       <!-- Container de Inicio -->
       <div class="form-container sign-in">
-        <form>
+        <form method="post" action="{% url 'login' %}">
+          {% csrf_token %}
           <h1 style="color: white">Iniciar Sesion</h1>
           <input
-            type="email"
-            id="loginEmail"
-            placeholder="Correo Electronico"
+            type="text"
+            id="loginUsername"
+            name="loginUsername"
+            placeholder="Nombre de Usuario"
+            required
           />
-          <input type="password" id="loginPassword" placeholder="Contraseña" />
+          <input
+            type="password"
+            id="loginPassword"
+            name="loginPassword"
+            placeholder="Contraseña"
+            required
+          />
           <a href="#" style="color: rgba(255, 255, 255, 0.616)"
             >Olvidaste tu contraseña?</a
           >
-          <button onclick="iniciarSesion(event)">Iniciar Sesion</button>
+          <button type="submit">Iniciar Sesion</button>
         </form>
       </div>
+
       <!-- Container animado para togglear inicio / registro -->
       <div class="toggle-container">
         <div class="toggle">
           <div class="toggle-panel toggle-left">
             <h1>
-              Camisetas 6.5 <img src="css/Images/logo2.gif" class="brand-logo" />
+              Camisetas 6.5
+              <img
+                src="{% static 'userapps/css/Images/logo2.gif' %}"
+                class="brand-logo"
+              />
             </h1>
             <p>Inicia sesion con tu cuenta</p>
             <button class="hidden" id="login">Iniciar sesion</button>
           </div>
           <div class="toggle-panel toggle-right">
             <h1>
-              Camisetas 6.5 <img src="css/Images/logo2.gif" class="brand-logo" />
+              Camisetas 6.5
+              <img
+                src="{% static 'userapps/css/Images/logo2.gif' %}"
+                class="brand-logo"
+              />
             </h1>
             <p>Crea tu cuenta para acceder a la pagina</p>
             <button class="hidden" id="register">Registrarse</button>
@@ -153,10 +213,23 @@
         </div>
       </div>
     </div>
-    <br />
-    <div id="messageError" class="errores" style="display: none;">AYUDA</div>
 
-    <script src="js/LoginScript.js"></script>
+    <br />
+    <div id="messageError" class="errores" style="display: none">
+      Mensaje de error aquí
+    </div>
+
+    {% if username_error %}
+    <div id="messageError" class="errores" style="display: block">
+      Este nombre de usuario ya está en uso.
+    </div>
+    {% endif %} {% if email_error %}
+    <div id="messageError" class="errores" style="display: block">
+      Este correo electrónico ya está en uso.
+    </div>
+    {% endif %}
+
+    <script src="{% static 'userapps/js/LoginScript.js' %}"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

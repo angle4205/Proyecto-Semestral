@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<!--
-  Guardar repositorio git bash:
-  
-  git status
-  git add .
-  git commit -m "Notas de avance"
-  git push -u origin main
-  
--->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Camisetas 6.5 | Pagina principal</title>
-    <link rel="stylesheet" href="css/Inicio.css" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'userapps/css/Inicio.css' %}" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -39,10 +31,14 @@
         >
           <a
             class="navbar-brand p-1"
-            href="Inicio.html"
+            href="{% url 'inicio' %}"
             style="margin-right: 8px; margin-left: 6px"
           >
-            <img src="css/Images/logo2.gif" alt="Logo" class="img-logo" />
+            <img
+              src="{% static 'userapps/css/Images/logo2.gif' %}"
+              alt="Logo"
+              class="img-logo"
+            />
             CAMISETAS 6.5
           </a>
 
@@ -59,14 +55,15 @@
             <span class="navbar-toggler-icon" style="width: 1.1em"></span>
           </button>
 
-          <div class="navbar-collapse collapse" id="navbarNav" style="">
+          <div class="navbar-collapse collapse" id="navbarNav">
             <ul class="navbar-nav">
+              {% if user.is_staff %}
               <li class="nav-item">
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
                   aria-current="page"
-                  href="Admin.html"
+                  href="{% url 'admin' %}"
                   >ADMIN*</a
                 >
               </li>
@@ -74,8 +71,18 @@
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
+                  href="{% url 'admin_crud' %}"
+                  >CRUD*</a
+                >
+              </li>
+              {% endif %}
+              
+              <li class="nav-item">
+                <a
+                  class="nav-link p-1 border"
+                  style="margin-bottom: 2px"
                   aria-current="page"
-                  href="Inicio.html"
+                  href="{% url 'inicio' %}"
                   >Pagina principal</a
                 >
               </li>
@@ -83,7 +90,7 @@
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
-                  href="Carrito.html"
+                  href="{% url 'carrito' %}"
                   >Carrito</a
                 >
               </li>
@@ -91,18 +98,32 @@
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
-                  href="Buscador.html"
+                  href="{% url 'buscador' %}"
                   >Buscador</a
                 >
               </li>
+              {% if user.is_authenticated %}
               <li class="nav-item">
                 <a
                   class="nav-link p-1 border"
                   style="margin-bottom: 2px"
-                  href="Login.html"
-                  >Inicio de sesion</a
+                  href="{% url 'logout' %}"
+                  >Cerrar sesión</a
                 >
               </li>
+              <li class="nav-item">
+                <span class="nav-link"> Bienvenido, {{ user.username }}</span>
+              </li>
+              {% else %}
+              <li class="nav-item">
+                <a
+                  class="nav-link p-1 border"
+                  style="margin-bottom: 2px"
+                  href="{% url 'login' %}"
+                  >Inicio de sesión</a
+                >
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -119,28 +140,28 @@
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
-            src="css/Images/carrousel/A-Sanchez (1).jpg"
+            src="{% static 'userapps/css/Images/carrousel/A-Sanchez (1).jpg' %}"
             class="Carrusel-Tamano"
             alt="Alexis"
           />
         </div>
         <div class="carousel-item">
           <img
-            src="css/Images/carrousel/1667308670426_DWS_2022_2.jpg"
+            src="{% static 'userapps/css/Images/carrousel/1667308670426_DWS_2022_2.jpg' %}"
             class="Carrusel-Tamano"
             alt="Vidal"
           />
         </div>
         <div class="carousel-item">
           <img
-            src="css/Images/carrousel/c4812320eb62f1ebcafd4f3ad25f9fb15c9649b5 (1).jpg"
+            src="{% static 'userapps/css/Images/carrousel/c4812320eb62f1ebcafd4f3ad25f9fb15c9649b5 (1).jpg' %}"
             class="Carrusel-Tamano"
             alt="Paredes"
           />
         </div>
         <div class="carousel-item">
           <img
-            src="css/Images/carrousel/Banner.png"
+            src="{% static 'userapps/css/Images/carrousel/Banner.png' %}"
             class="Carrusel-Tamano"
             alt="Paredes"
           />
@@ -168,7 +189,10 @@
 
     <div class="apiContainer">
       <h2 id="equiposAPI">Equipos lider Premier League</h2>
-      <div class="container" style="justify-content: center; align-items: center; display: flex;">
+      <div
+        class="container"
+        style="justify-content: center; align-items: center; display: flex"
+      >
         <div class="row" id="equiposPunteros"></div>
       </div>
     </div>
@@ -176,129 +200,23 @@
     <h2 class="productos1">Productos</h2>
 
     <div class="contenedor" id="contenedor">
-      <div>
-        <img id="imgcontenedor" src="css/Images/CR7.webp" alt="producto 1" />
-        <div class="informacion">
-          <p>Man U. Cristiano Ronaldo</p>
-          <p class="precio">$70.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
+      {% for product in productos %}
       <div>
         <img
           id="imgcontenedor"
-          src="css/Images/Iverson.webp"
-          alt="producto 2"
+          src="{{ product.imagen }}"
+          alt="{{ product.nombre }}"
         />
         <div class="informacion">
-          <p>Sixers Iverson</p>
-          <p class="precio">$35.000</p>
+          <p>{{ product.nombre }}</p>
+          <p class="precio">${{ product.precio }}</p>
           <button>Comprar</button>
         </div>
       </div>
-      <div>
-        <img
-          id="imgcontenedor"
-          src="css/Images/Colocolo.webp"
-          alt="producto 3"
-        />
-        <div class="informacion">
-          <p>Colo-Colo Local 2024</p>
-          <p class="precio">$50.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img
-          id="imgcontenedor"
-          src="css/Images/Maradona.webp"
-          alt="producto 4"
-        />
-        <div class="informacion">
-          <p>Argentina 94' Maradona</p>
-          <p class="precio">$24.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img
-          id="imgcontenedor"
-          src="css/Images/ARTURO VIDAL.jpg"
-          alt="producto 4"
-        />
-        <div class="informacion">
-          <p>el king</p>
-          <p class="precio">$23.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
-      <div>
-        <img id="imgcontenedor" src="css/Images/logo2.gif" alt="producto 4" />
-        <div class="informacion">
-          <p>Tito Calderon</p>
-          <p class="precio">$20.000</p>
-          <button>Comprar</button>
-        </div>
-      </div>
+      {% endfor %}
     </div>
 
-    <script src="js/InicioScript.js"></script>
+    <script src="{% static 'userapps/js/InicioScript.js' %}"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

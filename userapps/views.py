@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.http import JsonResponse
 from .models import Producto
+from .Carrito import Carrito
 
 # Create your views here.
 
@@ -13,6 +13,43 @@ def inicio(request):
     productos = Producto.objects.all()
     return render(request, 'inicio.html', {'productos': productos})
 
+def carrito(request):
+    carrito = Carrito(request)
+    total_carrito = sum(item['acumulado'] for item in carrito.carrito.values())
+    return render(request, 'carrito.html', {'total_carrito': total_carrito})
+
+# views funciones inicio / carrito ---------------------------
+
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("inicio")
+
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto)
+    return redirect("carrito")
+
+def sumar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto)
+    return redirect("carrito")
+
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto)
+    return redirect("carrito")
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("carrito")
+
+# ------------------------------------------------------------
 
 def admin_crud(request):
     productos = Producto.objects.all()
@@ -20,11 +57,6 @@ def admin_crud(request):
 
 def admin(request):
     return render(request, "Admin.html")
-
-
-def carrito(request):
-    return render(request, "Carrito.html")
-
 
 def buscador(request):
     return render(request, "Buscador.html")

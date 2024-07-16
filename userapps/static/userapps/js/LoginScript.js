@@ -121,6 +121,7 @@ function registrarse(event) {
                 'X-CSRFToken': csrftoken,
             },
             body: JSON.stringify({
+                action: 'register',
                 loginUsername: username,
                 loginPassword: password,
                 registerUsername: username,
@@ -143,7 +144,7 @@ function registrarse(event) {
                 messageError.innerHTML = 'Este correo electrónico ya está en uso';
             } else {
                 messageError.style.display = 'none';
-                document.getElementById('registerForm').submit();
+                window.location.href = '/login/';
             }
         })
         .catch(error => {

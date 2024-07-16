@@ -7,6 +7,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.img-small {
+  size: 200px;
+}
+
 .navbar {
   top: 0;
   left: 0;

@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Producto(models.Model):
     nombre = models.CharField(max_length=25)
     imagen = models.CharField(max_length=100)
-    precio = models.DecimalField(max_digits=10, decimal_places=2)
+    precio = models.IntegerField()
     descripcion = models.CharField(max_length=100)
 
     def __str__(self):

@@ -103,20 +103,7 @@
   font-weight: 300px;
 }
 
-.informacion button {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  background-color: lightgreen;
-  width: 100px;
-  height: 60;
-  border-radius: 10px;
-  border: none;
-
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.informacion button:hover {
+.comprar:hover {
   background-color: lightseagreen;
 }
 

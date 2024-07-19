@@ -3,7 +3,7 @@ from . import views
 from . import tests
 from django.contrib.auth.views import LogoutView
 
-from userapps.views import inicio, agregar_producto, restar_producto, eliminar_producto, limpiar_carrito, sumar_producto
+from userapps.views import inicio, agregar_producto, restar_producto, eliminar_producto, limpiar_carrito, sumar_producto, guardar_carrito
 
 urlpatterns = [
     #pruebas
@@ -22,6 +22,7 @@ urlpatterns = [
     path('restar/<int:producto_id>/', restar_producto, name="Sub"),
     path('sumar/<int:producto_id>/', sumar_producto, name="Sum"),
     path('limpiar/', limpiar_carrito, name="CLS"),
+    path('guardar/', guardar_carrito, name="Save"),
     ##################
     path('buscador/', views.buscador, name='buscador'),
     path('login/', views.login_view, name='login'),

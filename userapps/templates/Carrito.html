@@ -128,62 +128,72 @@
       </nav>
     </nav>
 
-    <br>
+    <div class="container mt-5 pt-5">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="table-dark text-center">
+            <tr>
+              <th scope="col" colspan="4">CARRITO</th>
+            </tr>
+            <tr>
+              <th scope="col">IMAGEN</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">PRECIO</th>
+              <th scope="col">CANTIDAD</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% if request.session.carrito.items %} 
+            {% for key, value in request.session.carrito.items %}
+            <tr>
+              <td class="text-center">
+                <img
+                  style="width: 70px; height: 70px"
+                  src="{{ value.imagen }}"
+                  alt="{{ value.nombre }}"
+                  class="img-fluid"
+                />
+              </td>
+              <td class="align-middle">{{value.nombre}}</td>
+              <td class="align-middle">{{value.acumulado}}</td>
+              <td class="align-middle text-center">
+                {{value.cantidad}}
+                <a
+                  href="{% url 'Sum' value.producto_id %}"
+                  class="badge btn btn-success mx-1"
+                  >+</a
+                >
+                <a
+                  href="{% url 'Sub' value.producto_id %}"
+                  class="badge btn btn-danger mx-1"
+                  >-</a
+                >
+              </td>
+            </tr>
+            {% endfor %} 
+            {% else %}
+            <tr>
+              <td colspan="4">
+                <div class="alert alert-danger text-center">Carrito vacio.</div>
+              </td>
+            </tr>
+            {% endif %}
+            <tr>
+              <th scope="row">Total:</th>
+              <td colspan="3" class="text-end">$ {{total_carrito}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <table class="table table-bordered">
-      <thead>
-        <tr>
-          <th scope="row" colspan="4" class="text-center">CARRITO</th>
-        </tr>
-        <tr>
-          <th class="col">IMAGEN</th>
-          <th scope="col">NOMBRE</th>
-          <th scope="col">PRECIO</th>
-          <th scope="col">CANTIDAD</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% if request.session.carrito.items %} 
-        {% for key, value in request.session.carrito.items %}
-         <tr>
-          <td>
-            <img style="width: 70px; height: 70px;" src="{{ value.imagen }}" alt="{{ value.nombre }}" />
-          </td>
-          <td>{{value.nombre}}</td>
-          <td>{{value.acumulado}}</td>
-          <td>
-            {{value.cantidad}}
-            <a
-              href="{% url 'Sum' value.producto_id %}"
-              class="badge btn btn-dark badge-dark"
-              >+</a
-            >
-            <a
-              href="{% url 'Sub' value.producto_id %}"
-              class="badge btn btn-dark badge-dark"
-              >-</a
-            >
-          </td>
-         </tr>
-        {% endfor %} 
-        {% else %}
-        <tr>
-          <td colspan="4">
-            <div class="alert alert-danger text-center">Carrito vacio.</div>
-          </td>
-        </tr>
-        {% endif %}
-        <tr>
-          <th scope="row">Total:</th>
-          <td colspan="2">$ {{total_carrito}}</td>
-        </tr>
-      </tbody>
-    </table>
-    <hr>
-
-    <div class="row text-center">
-        <div class="col-6"><a href="{% url 'CLS'%}" class="btn btn-danger">Limpiar</a></div>
-        <div class="col-6"><a href="#" class="btn btn-success">Guardar</a></div>
+      <div class="row text-center mt-3">
+        <div class="col-6">
+          <a href="{% url 'CLS'%}" class="btn btn-danger w-100">Limpiar</a>
+        </div>
+        <div class="col-6">
+          <a href="{% url 'Save'%}" class="btn btn-success w-100">Comprar</a>
+        </div>
+      </div>
     </div>
 
     <script

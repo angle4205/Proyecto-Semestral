@@ -49,6 +49,11 @@ def limpiar_carrito(request):
     carrito.limpiar()
     return redirect("carrito")
 
+def guardar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("inicio")
+
 # ------------------------------------------------------------
 
 def admin_crud(request):
